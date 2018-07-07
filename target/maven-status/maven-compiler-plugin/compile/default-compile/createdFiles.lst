@@ -1,0 +1,10 @@
+org\outsiders\release\config\CassandraConfig.class
+org\outsiders\release\domain\User.class
+org\outsiders\release\config\SecurityConfig.class
+org\outsiders\release\service\impl\UserServiceImpl.class
+org\outsiders\release\bootstrap\SeedData.class
+org\outsiders\release\controller\UserController.class
+org\outsiders\release\domain\Character.class
+org\outsiders\release\service\UserService.class
+org\outsiders\release\ReleaseApplication.class
+org\outsiders\release\repository\UserRepository.class

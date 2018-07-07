@@ -1,0 +1,1 @@
+CREATE TYPE outsiders.ability(id text, name text, description text, modifiers frozen <statmap>, timespan frozen <timespan>, target frozen <target>, type text, spellinfo frozen <spellinfo>);

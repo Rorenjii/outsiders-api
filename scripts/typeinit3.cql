@@ -1,0 +1,3 @@
+CREATE TYPE outsiders.item(id text, name text, description text, bonuses frozen <statmap>, types list<text>, abilities list<frozen <ability>>);
+CREATE TYPE outsiders.classlevel(id text, level int, role text, innateabilities list<frozen <ability>>, chosenabilities list<frozen <ability>>, bonuses frozen <statmap>);
+CREATE TYPE outsiders.race(id text, type text, variant text, stats frozen <statmap>, abilities list<frozen <ability>>);

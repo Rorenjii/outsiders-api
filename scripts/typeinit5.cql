@@ -1,0 +1,1 @@
+CREATE TYPE outsiders.character(id text, inventory frozen <inventory>, classlevels list<frozen <classlevel>>, race frozen <race>, stats frozen <statmap>, abilities list<frozen <ability>>, characterdescription frozen <characterdescription>);

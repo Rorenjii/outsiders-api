@@ -1,0 +1,1 @@
+CREATE TABLE outsiders.user(id text, characters list<frozen <character>>, email text, name text, password text, primary key (id, email));
