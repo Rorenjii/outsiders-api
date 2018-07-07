@@ -1,0 +1,16 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< org.outsiders:release >------------------------
+[INFO] Building release 0.0.1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ release ---
+[INFO] Deleting C:\Users\Logan\Desktop\API\release\target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.455 s
+[INFO] Finished at: 2018-07-03T11:43:50-05:00
+[INFO] ------------------------------------------------------------------------
+
+C:\Users\Logan\Desktop\API\release>C:\Users\Logan\Desktop\API\release>

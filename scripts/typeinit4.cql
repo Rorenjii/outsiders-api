@@ -1,0 +1,1 @@
+CREATE TYPE outsiders.inventory(id text, size int, wallet frozen <wallet>, items map<frozen <item>,int>);
