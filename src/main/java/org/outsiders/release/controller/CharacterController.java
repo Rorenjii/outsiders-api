@@ -24,21 +24,6 @@ public class CharacterController {
 	@Autowired
 	private CharacterService service;
 	
-	@GetMapping("/user/{userId}")
-	public CharacterResponse getByUser(@PathVariable("userId") String userId) {
-		CharacterResponse resp = new CharacterResponse();
-		try {
-//			resp.setCharacters(service.findAllByUserId(userId));
-			resp.setErrorCode(null);
-			resp.setSuccess(true);
-			return resp;
-		} catch (Exception e) {
-			resp.setErrorCode(e.getMessage());
-			resp.setSuccess(false);
-			return resp;
-		}
-	}
-	
 	@GetMapping("/{id}")
 	public CharacterResponse getById(@PathVariable("id") String id) {
 		CharacterResponse resp = new CharacterResponse();
@@ -54,11 +39,26 @@ public class CharacterController {
 		}
 	}
 	
+	@GetMapping("/")
+	public CharacterResponse getAllCharacters() {
+		CharacterResponse resp = new CharacterResponse();
+		try {
+			resp.setCharacters(service.findAll());
+			resp.setErrorCode(null);
+			resp.setSuccess(true);
+			return resp;
+		} catch (Exception e) {
+			resp.setErrorCode(e.getMessage());
+			resp.setSuccess(false);
+			return resp;
+		}
+	}
+	
 	@PostMapping("/")
 	public CharacterResponse createCharacter(@RequestBody CharacterRequest request) {
 		CharacterResponse resp = new CharacterResponse();
 		try {
-			Character character = request.getUpdated();
+			Character character = request.getCharacter();
 			String id = UUID.randomUUID().toString();
 			character.setId(id);
 			Character savedChar = service.insert(character);
@@ -90,7 +90,7 @@ public class CharacterController {
 			return resp;
 		} catch (Exception e) {
 			resp.setSuccess(false);
-			resp.setErrorCode("EXCEP");
+			resp.setErrorCode(e.getMessage());
 			resp.setCharacters(null);
 			return resp;
 		}

@@ -4,14 +4,14 @@ import org.outsiders.release.domain.Character;
 
 public class CharacterRequest {
 
-	private Character updated;
+	private Character character;
 	private boolean cacheForRollback;
 	
-	public Character getUpdated() {
-		return updated;
+	public Character getCharacter() {
+		return character;
 	}
-	public void setUpdated(Character updated) {
-		this.updated = updated;
+	public void setCharacter(Character character) {
+		this.character = character;
 	}
 	public boolean isCacheForRollback() {
 		return cacheForRollback;

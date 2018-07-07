@@ -1,22 +1,26 @@
 package org.outsiders.release.domain.response;
 
-public class RegistrationResponse {
+import java.util.List;
 
+import org.outsiders.release.domain.ClassLevel;
+
+public class ClassLevelResponse {
+	
+	private List<ClassLevel> classLevels;
 	private boolean success;
-	private String summary;
 	private String errorCode;
 	
+	public List<ClassLevel> getClassLevels() {
+		return classLevels;
+	}
+	public void setClassLevels(List<ClassLevel> classLevels) {
+		this.classLevels = classLevels;
+	}
 	public boolean isSuccess() {
 		return success;
 	}
 	public void setSuccess(boolean success) {
 		this.success = success;
-	}
-	public String getSummary() {
-		return summary;
-	}
-	public void setSummary(String summary) {
-		this.summary = summary;
 	}
 	public String getErrorCode() {
 		return errorCode;
