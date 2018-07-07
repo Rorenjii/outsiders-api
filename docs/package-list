@@ -4,7 +4,6 @@ org.outsiders.release.config
 org.outsiders.release.controller
 org.outsiders.release.domain
 org.outsiders.release.domain.constant
-org.outsiders.release.domain.dto
 org.outsiders.release.domain.request
 org.outsiders.release.domain.response
 org.outsiders.release.repository

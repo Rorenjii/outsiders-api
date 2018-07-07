@@ -1,6 +1,6 @@
-package org.outsiders.release.domain.dto;
+package org.outsiders.release.domain.request;
 
-public class UserDTO {
+public class AuthRequest {
 
 	private String email;
 	private transient String password;
@@ -17,6 +17,5 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }
