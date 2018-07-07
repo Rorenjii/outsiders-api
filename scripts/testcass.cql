@@ -1,0 +1,1 @@
+CREATE TABLE outsiders.testcassandra(id text PRIMARY KEY, paragraph text, wallet list<frozen<wallet>>);
