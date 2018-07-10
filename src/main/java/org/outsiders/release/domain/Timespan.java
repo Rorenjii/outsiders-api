@@ -1,5 +1,6 @@
 package org.outsiders.release.domain;
 
+import org.outsiders.release.domain.constant.Per;
 import org.outsiders.release.domain.constant.TimeUnit;
 import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 
@@ -8,7 +9,14 @@ public class Timespan {
 	
 	private TimeUnit unit;
 	private int value;
+	private Per per;
 
+	public Per getPer() {
+		return per;
+	}
+	public void setPer(Per per) {
+		this.per = per;
+	}
 	public TimeUnit getUnit() {
 		return unit;
 	}

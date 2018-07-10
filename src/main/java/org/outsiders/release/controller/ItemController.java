@@ -1,10 +1,14 @@
 package org.outsiders.release.controller;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 import org.outsiders.release.domain.Item;
+import org.outsiders.release.domain.Race;
+import org.outsiders.release.domain.Item;
 import org.outsiders.release.domain.request.ItemRequest;
+import org.outsiders.release.domain.response.ItemResponse;
 import org.outsiders.release.domain.response.ItemResponse;
 import org.outsiders.release.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +43,27 @@ public class ItemController {
 		}
 	}
 	
+	@GetMapping("/name/{name}")
+	public ItemResponse getByName(@PathVariable("name") String name) {
+		ItemResponse resp = new ItemResponse();
+		try {
+			resp.setItems(Collections.singletonList(service.findByName(name)));
+			resp.setErrorCode(null);
+			resp.setSuccess(true);
+			return resp;
+		} catch (Exception e) {
+			resp.setErrorCode(e.getMessage());
+			resp.setSuccess(false);
+			return resp;
+		}
+	}
+	
 	@GetMapping("/")
 	public ItemResponse getAllItems() {
 		ItemResponse resp = new ItemResponse();
 		try {
-			resp.setItems(service.findAll());
+			List<Item> list = service.findAll();
+			resp.setItems(list);
 			resp.setErrorCode(null);
 			resp.setSuccess(true);
 			return resp;
@@ -75,8 +95,21 @@ public class ItemController {
 	
 	@PutMapping("/")
 	public ItemResponse updateItem(@RequestBody ItemRequest request) {
-			//going to need some chunky custom logic..... enjoy.
-		return new ItemResponse();
+		ItemResponse response = new ItemResponse();
+    	try {
+	    	Item a = service.findById(request.getItem().getId()).get();
+	    	a.updateItem(request.getItem());
+	    	Item r = service.insert(a);
+	    	response.setItems(Collections.singletonList(r));
+	    	response.setErrorCode(null);
+	    	response.setSuccess(true);
+	        return response;
+    	} catch (Exception e) {
+    		response.setItems(null);
+    		response.setErrorCode(e.getMessage());
+    		response.setSuccess(false);
+    		return response;
+    	}
 	}
 	
 	@DeleteMapping("/{id}")

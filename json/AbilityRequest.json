@@ -1,0 +1,25 @@
+{
+"ability" : {
+            "id": "f93c6b82-f604-4fa1-93d0-52b0399923c1",
+            "type": null,
+            "name": null,
+            "description": null,
+            "modifiers": null,
+            "timespan": {
+                "unit": null,
+                "value": 0
+            },
+            "target": {
+                "type": null,
+                "shape": null,
+                "range": 0,
+                "size": 0
+            },
+            "spellInfo": {
+                "spellLevel": 0,
+                "school": null,
+                "arcane": false,
+                "divine": false
+            }
+        }
+}

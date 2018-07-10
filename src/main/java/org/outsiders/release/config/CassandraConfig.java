@@ -13,4 +13,5 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
 	protected String getKeyspaceName() {
 		return "outsiders";
 	}
+	
 }

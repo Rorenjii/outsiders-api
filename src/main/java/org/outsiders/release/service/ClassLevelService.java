@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.outsiders.release.domain.ClassLevel;
+import org.outsiders.release.domain.constant.ClassType;
 
 public interface ClassLevelService {
+	
+	public ClassLevel findByClassTypeAndLevel(ClassType classType, int level);
     
 	ClassLevel insert(ClassLevel entity);
 

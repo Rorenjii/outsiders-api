@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.outsiders.release.domain.Item;
 
 public interface ItemService {
+	
+	Item findByName(String name);
     
 	Item insert(Item entity);
 

@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.outsiders.release.domain.Race;
+import org.outsiders.release.domain.constant.RaceType;
 
 public interface RaceService {
+	
+	Race findByType(RaceType type);
     
 	Race insert(Race entity);
 

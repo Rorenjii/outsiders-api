@@ -8,4 +8,5 @@ org.outsiders.release.domain.request
 org.outsiders.release.domain.response
 org.outsiders.release.repository
 org.outsiders.release.service
+org.outsiders.release.service.handler
 org.outsiders.release.service.impl

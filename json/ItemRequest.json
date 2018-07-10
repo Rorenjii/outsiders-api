@@ -1,0 +1,13 @@
+{
+	"item": {
+            "id": "36a86997-56b2-48c1-a86c-95f5e6996024",
+            "name": null,
+            "description": null,
+            "modifiers": null,
+            "quantity": null,
+            "types": null,
+            "abilityIds": [
+                "f93c6b82-f604-4fa1-93d0-52b0399923c1"
+            ]
+        }
+}

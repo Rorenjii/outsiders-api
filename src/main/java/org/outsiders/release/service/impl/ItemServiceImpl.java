@@ -69,5 +69,10 @@ public class ItemServiceImpl implements ItemService {
 	public void deleteAll() {
 		repo.deleteAll();
 	}
+
+	@Override
+	public Item findByName(String name) {
+		return repo.findByName(name);
+	}
 	
 }

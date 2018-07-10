@@ -3,9 +3,16 @@ CREATE KEYSPACE outsiders WITH REPLICATION = {
 	'replication_factor':1
 };
 
+CREATE TYPE outsiders.modmap (
+	modifier text,
+	value int,
+	d text
+);
+
 CREATE TYPE outsiders.timespan (
     unit text,
-    value int
+    value int,
+    per text
 );
 
 CREATE TYPE outsiders.target (
@@ -32,7 +39,7 @@ CREATE TYPE outsiders.wallet (
 CREATE TYPE outsiders.inventory (
     size int,
     wallet frozen<wallet>,
-    itemIds list<text>
+    itemIds map<text, int>
 );
 
 CREATE TYPE outsiders.characterdescription (
@@ -53,7 +60,7 @@ CREATE TABLE outsiders.ability (
 	id text PRIMARY KEY,
     name text,
     description text,
-    modifiers map<text, int>,
+    modifiers list<frozen<modmap>>,
     timespan frozen<timespan>,
     target frozen<target>,
     type text,
@@ -64,8 +71,7 @@ CREATE TABLE outsiders.item (
 	id text PRIMARY KEY,
     name text,
     description text,
-	quantity int,
-    modifiers map<text, int>,
+    modifiers list<frozen<modmap>>,
     types list<text>,
     abilityIds list<text>
 );
@@ -73,10 +79,10 @@ CREATE TABLE outsiders.item (
 CREATE TABLE outsiders.classlevel (
 	id text PRIMARY KEY,
     level int,
-    role text,
+    classtype text,
     innateabilityIds list<text>,
     chosenabilityIds list<text>,
-    modifiers map<text, int>
+    modifiers list<frozen<modmap>>
 );
 
 CREATE TABLE outsiders.race (
@@ -84,7 +90,7 @@ CREATE TABLE outsiders.race (
     type text,
 	size text,
     variant text,
-    modifiers map<text, int>,
+    modifiers list<frozen<modmap>>,
     abilityIds list<text>
 );
 
@@ -93,7 +99,7 @@ CREATE TABLE outsiders.character (
     inventory frozen<inventory>,
     classlevelIds list<text>,
     raceId text,
-    modifiers map<text, int>,
+    modifiers list<frozen<modmap>>,
     featAbilityIds list<text>,
     characterdescription frozen<characterdescription>
 );
@@ -105,3 +111,27 @@ CREATE TABLE outsiders.user (
     password text,
     characterIds list<text>
 );
+
+CREATE INDEX user_email
+ON outsiders.user ( email );
+
+CREATE INDEX item_name
+ON outsiders.item ( name );
+
+CREATE INDEX race_name
+ON outsiders.race ( type );
+
+CREATE INDEX classlevel_classtype
+ON outsiders.classlevel ( classtype );
+
+CREATE INDEX classlevel_level
+ON outsiders.classlevel ( level );
+
+CREATE INDEX ability_name
+ON outsiders.ability ( name );
+
+CREATE INDEX race_type
+ON outsiders.race ( type );
+
+CREATE INDEX item_name
+ON outsiders.item ( name );

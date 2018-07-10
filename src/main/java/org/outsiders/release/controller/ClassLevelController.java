@@ -4,7 +4,11 @@ import java.util.Collections;
 import java.util.UUID;
 
 import org.outsiders.release.domain.ClassLevel;
+import org.outsiders.release.domain.Race;
+import org.outsiders.release.domain.ClassLevel;
+import org.outsiders.release.domain.constant.ClassType;
 import org.outsiders.release.domain.request.ClassLevelRequest;
+import org.outsiders.release.domain.response.ClassLevelResponse;
 import org.outsiders.release.domain.response.ClassLevelResponse;
 import org.outsiders.release.service.ClassLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/classLevel")
+@RequestMapping("/api/classlevel")
 public class ClassLevelController {
 
 	@Autowired
@@ -29,6 +33,21 @@ public class ClassLevelController {
 		ClassLevelResponse resp = new ClassLevelResponse();
 		try {
 			resp.setClassLevels(Collections.singletonList(service.findById(id).get()));
+			resp.setErrorCode(null);
+			resp.setSuccess(true);
+			return resp;
+		} catch (Exception e) {
+			resp.setErrorCode(e.getMessage());
+			resp.setSuccess(false);
+			return resp;
+		}
+	}
+	
+	@GetMapping("/{classType}/level/{level}")
+	public ClassLevelResponse getById(@PathVariable("classType") ClassType classType, @PathVariable("level") int level) {
+		ClassLevelResponse resp = new ClassLevelResponse();
+		try {
+			resp.setClassLevels(Collections.singletonList(service.findByClassTypeAndLevel(classType, level)));
 			resp.setErrorCode(null);
 			resp.setSuccess(true);
 			return resp;
@@ -75,8 +94,21 @@ public class ClassLevelController {
 	
 	@PutMapping("/")
 	public ClassLevelResponse updateClassLevel(@RequestBody ClassLevelRequest request) {
-			//going to need some chunky custom logic..... enjoy.
-		return new ClassLevelResponse();
+		ClassLevelResponse response = new ClassLevelResponse();
+    	try {
+	    	ClassLevel a = service.findById(request.getClassLevel().getId()).get();
+	    	a.updateClassLevel(request.getClassLevel());
+	    	ClassLevel r = service.insert(a);
+	    	response.setClassLevels(Collections.singletonList(r));
+	    	response.setErrorCode(null);
+	    	response.setSuccess(true);
+	        return response;
+    	} catch (Exception e) {
+    		response.setClassLevels(null);
+    		response.setErrorCode(e.getMessage());
+    		response.setSuccess(false);
+    		return response;
+    	}
 	}
 	
 	@DeleteMapping("/{id}")

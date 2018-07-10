@@ -1,0 +1,14 @@
+{
+"classLevel" : {
+            "id": "792c79a7-f8aa-49a0-9fef-f897aa8399a9",
+            "level": 0,
+            "classType": null,
+            "innateAbilityIds": [
+                "83e3d502-32cd-4967-831d-9b016ec0a0fc"
+            ],
+            "chosenAbilityIds": [
+                "83e3d502-32cd-4967-831d-9b016ec0a0fc"
+            ],
+            "modifiers": null
+        }
+}
