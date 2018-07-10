@@ -1,0 +1,35 @@
+{
+"character" : {
+            "id": "f5f0a108-9de4-4783-9bf2-d31497ebcf3f",
+            "inventory": {
+                "itemIds": [
+                    "22e60683-f450-4a3b-89ab-913e0750b0ea"
+                ],
+                "size": 0,
+                "wallet": {
+                    "copper": null,
+                    "silver": null,
+                    "gold": null,
+                    "platinum": null
+                }
+            },
+            "classLevelIds": null,
+            "featAbilityIds": null,
+            "raceId": null,
+            "modifiers": null,
+            "characterDescription": {
+                "name": null,
+                "playerName": null,
+                "homeland": null,
+                "deity": null,
+                "alignment": null,
+                "gender": null,
+                "age": null,
+                "height": null,
+                "weight": null,
+                "hair": null,
+                "eyes": null
+            }
+        },
+"cacheForRollback" : "false"
+}

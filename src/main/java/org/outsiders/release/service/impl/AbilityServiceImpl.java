@@ -15,6 +15,7 @@ public class AbilityServiceImpl implements AbilityService {
 	@Autowired
 	private AbilityRepository repo;
 	
+	
 	@Override
 	public Ability insert(Ability entity) {
 		return repo.insert(entity);
@@ -68,6 +69,11 @@ public class AbilityServiceImpl implements AbilityService {
 	@Override
 	public void deleteAll() {
 		repo.deleteAll();
+	}
+
+	@Override
+	public Ability findByName(String name) {
+		return repo.findByName(name);
 	}
 	
 }

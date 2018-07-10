@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.outsiders.release.domain.Race;
+import org.outsiders.release.domain.constant.RaceType;
 import org.outsiders.release.repository.RaceRepository;
 import org.outsiders.release.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,11 @@ public class RaceServiceImpl implements RaceService {
 	@Override
 	public void deleteAll() {
 		repo.deleteAll();
+	}
+
+	@Override
+	public Race findByType(RaceType type) {
+		return repo.findByType(type);
 	}
 
 }

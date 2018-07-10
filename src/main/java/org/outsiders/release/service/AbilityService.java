@@ -8,6 +8,8 @@ import org.outsiders.release.domain.Ability;
 public interface AbilityService {
     
 	Ability insert(Ability entity);
+	
+	Ability findByName(String name);
 
     List<Ability> insert(Iterable<Ability> entities);
 

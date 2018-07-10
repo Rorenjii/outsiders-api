@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.UUID;
 
 import org.outsiders.release.domain.Ability;
+import org.outsiders.release.domain.Race;
+import org.outsiders.release.domain.Ability;
 import org.outsiders.release.domain.request.AbilityRequest;
 import org.outsiders.release.domain.response.AbilityResponse;
 import org.outsiders.release.service.AbilityService;
@@ -29,6 +31,21 @@ public class AbilityController {
 		AbilityResponse resp = new AbilityResponse();
 		try {
 			resp.setAbilities(Collections.singletonList(service.findById(id).get()));
+			resp.setErrorCode(null);
+			resp.setSuccess(true);
+			return resp;
+		} catch (Exception e) {
+			resp.setErrorCode(e.getMessage());
+			resp.setSuccess(false);
+			return resp;
+		}
+	}
+	
+	@GetMapping("/name/{name}")
+	public AbilityResponse getByName(@PathVariable("name") String name) {
+		AbilityResponse resp = new AbilityResponse();
+		try {
+			resp.setAbilities(Collections.singletonList(service.findByName(name)));
 			resp.setErrorCode(null);
 			resp.setSuccess(true);
 			return resp;
@@ -75,8 +92,21 @@ public class AbilityController {
 	
 	@PutMapping("/")
 	public AbilityResponse updateAbility(@RequestBody AbilityRequest request) {
-			//going to need some chunky custom logic..... enjoy.
-		return new AbilityResponse();
+		AbilityResponse response = new AbilityResponse();
+    	try {
+	    	Ability a = service.findById(request.getAbility().getId()).get();
+	    	a.updateAbility(request.getAbility());
+	    	Ability r = service.insert(a);
+	    	response.setAbilities(Collections.singletonList(r));
+	    	response.setErrorCode(null);
+	    	response.setSuccess(true);
+	        return response;
+    	} catch (Exception e) {
+    		response.setAbilities(null);
+    		response.setErrorCode(e.getMessage());
+    		response.setSuccess(false);
+    		return response;
+    	}
 	}
 	
 	@DeleteMapping("/{id}")

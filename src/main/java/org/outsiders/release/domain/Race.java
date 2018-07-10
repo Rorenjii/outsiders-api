@@ -2,6 +2,7 @@ package org.outsiders.release.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.outsiders.release.domain.constant.ModifierType;
 import org.outsiders.release.domain.constant.RaceType;
@@ -17,9 +18,40 @@ public class Race {
     
 	private RaceType type;
 	private String variant;
-	private Map<ModifierType, Integer> modifiers;
+	private List<ModMap> modifiers;
 	private List<String> abilityIds;
 	private Size size;
+	
+	public Race() {
+		String id = UUID.randomUUID().toString();
+		this.id = id;
+	}
+	
+	public void updateRace(Race a) throws Exception {
+    	if(this.getId().equals(a.getId())) {
+			if(a.getVariant() != null) { 
+				this.setVariant(a.getVariant());
+			}
+			if(a.getType() != null) {
+				this.setType(a.getType());
+			}
+			if(a.getSize() != null) {
+				this.setSize(a.getSize());
+			}
+			if(a.getModifiers() != null) {
+				if (!a.getModifiers().isEmpty()) {
+					this.setModifiers(a.getModifiers());
+				}
+			}
+			if(a.getAbilityIds() != null) {
+				if (!a.getAbilityIds().isEmpty()) {
+					this.setAbilityIds(a.getAbilityIds());
+				}
+			}
+		} else {
+			throw new Exception("ID MISMATCH");
+		}
+	}
 	
 	public String getId() {
 		return id;
@@ -45,10 +77,10 @@ public class Race {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-	public Map<ModifierType, Integer> getModifiers() {
+	public List<ModMap> getModifiers() {
 		return modifiers;
 	}
-	public void setModifiers(Map<ModifierType, Integer> modifiers) {
+	public void setModifiers(List<ModMap> modifiers) {
 		this.modifiers = modifiers;
 	}
 	public List<String> getAbilityIds() {

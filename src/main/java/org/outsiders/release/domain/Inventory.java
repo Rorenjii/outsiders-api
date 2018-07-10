@@ -1,20 +1,21 @@
 package org.outsiders.release.domain;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 
 @UserDefinedType
 public class Inventory {
 
-	private List<String> itemIds;
+	private Map<String, Integer> itemIds;
 	private int size;
 	private Wallet wallet;
 
-	public List<String> getItemIds() {
+	public Map<String, Integer> getItemIds() {
 		return itemIds;
 	}
-	public void setItemIds(List<String> itemIds) {
+	public void setItemIds(Map<String, Integer> itemIds) {
 		this.itemIds = itemIds;
 	}
 	public int getSize() {

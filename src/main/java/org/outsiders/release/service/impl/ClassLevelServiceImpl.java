@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.outsiders.release.domain.ClassLevel;
+import org.outsiders.release.domain.constant.ClassType;
 import org.outsiders.release.repository.ClassLevelRepository;
 import org.outsiders.release.service.ClassLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,11 @@ public class ClassLevelServiceImpl implements ClassLevelService {
 
 	@Autowired
 	private ClassLevelRepository repo;
+	
+	@Override
+	public ClassLevel findByClassTypeAndLevel(ClassType classType, int level) {
+		return repo.findByClassTypeAndLevel(classType, level);
+	}
 	
 	@Override
 	public ClassLevel insert(ClassLevel entity) {

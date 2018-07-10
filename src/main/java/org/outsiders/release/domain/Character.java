@@ -2,6 +2,7 @@ package org.outsiders.release.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.outsiders.release.domain.constant.ModifierType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
@@ -17,8 +18,46 @@ public class Character {
 	private List<String> classLevelIds;
 	private List<String> featAbilityIds;
 	private String raceId;
-	private Map<ModifierType, Integer> modifiers;
+	private List<ModMap> modifiers;
 	private CharacterDescription characterDescription;
+	
+	public Character() {
+		String id = UUID.randomUUID().toString();
+		this.id = id;
+	}
+
+	public void updateCharacter(Character c) throws Exception {
+		if(this.getId().equals(c.getId())) {
+			if(c.getInventory() != null) { 
+				this.setInventory(c.getInventory());
+			}
+			if(c.getClassLevelIds() != null) {
+				if (!c.getClassLevelIds().isEmpty()) {
+					this.setClassLevelIds(c.getClassLevelIds());
+				}	
+			}
+			if(c.getFeatAbilityIds() != null) {
+				if (!c.getFeatAbilityIds().isEmpty()) {
+					this.setFeatAbilityIds(c.getFeatAbilityIds());
+				}	
+			}
+			if(c.getModifiers() != null) {
+				if (!c.getModifiers().isEmpty()) {
+					this.setModifiers(c.getModifiers());
+				}	
+			}
+			if(c.getRaceId() != null) {
+				if (!c.getRaceId().isEmpty()) {
+					this.setRaceId(c.getRaceId());
+				}	
+			}
+			if(c.getCharacterDescription() != null) { 
+				this.setCharacterDescription(c.getCharacterDescription());
+			}
+		} else {
+			throw new Exception("ID MISMATCH");
+		}
+	}
 
 	public String getId() {
 		return id;
@@ -60,11 +99,11 @@ public class Character {
 		this.raceId = raceId;
 	}
 
-	public Map<ModifierType, Integer> getModifiers() {
+	public List<ModMap> getModifiers() {
 		return modifiers;
 	}
 
-	public void setModifiers(Map<ModifierType, Integer> modifiers) {
+	public void setModifiers(List<ModMap> modifiers) {
 		this.modifiers = modifiers;
 	}
 

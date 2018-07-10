@@ -5,5 +5,6 @@ public enum AbilityType {
 	CLASS, 
 	FEAT, 
 	ITEM, 
-	SPELL;
+	SPELL,
+	PASSIVE;
 }
